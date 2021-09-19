@@ -17,11 +17,3 @@ export const Title = styled.Text`
   color: ${colors.secondary};
   font-weight: 500;
 `;
-
-export const Input = styled.TextInput.attrs({
-  selectionColor: colors.secondary,
-})`
-  margin-left: 16px;
-  color: ${colors.secondary};
-  font-size: 20px;
-`;

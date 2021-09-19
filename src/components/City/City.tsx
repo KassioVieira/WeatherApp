@@ -11,10 +11,11 @@ const City = ({
   name,
   main,
   weather,
-  sys,
+  country,
   favorite,
   remove,
   onPress,
+  favoritePress,
 }: CityProps) => {
   const getTemp = (temp: number) => `${temp.toFixed(0)}º`;
 
@@ -36,7 +37,9 @@ const City = ({
         <Row>
           <Col>
             <Title>{name}</Title>
-            <Body top={5}>{sys.country}</Body>
+            <Body top={5} style={{marginLeft: -5}}>
+              {country}
+            </Body>
           </Col>
           <Title color={colors.textPrimary} size={34}>
             {getTemp(main.temp)}
@@ -50,7 +53,7 @@ const City = ({
               {getTemp(main.temp_min)} - {getTemp(main.temp_max)}
             </Body>
           </Col>
-          <Favorite>
+          <Favorite onPress={favoritePress}>
             <Icon
               name={favorite ? 'heart' : 'heart-outline'}
               color={colors.favorite}

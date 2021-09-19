@@ -2,11 +2,15 @@ import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete';
+import {useDispatch} from 'react-redux';
+import Config from 'react-native-config';
 
 import colors from 'values/colors';
 import {NavBarProps} from './NavBar.types';
 
 import {Header, Title} from './NavBar.styles';
+import {getCity} from 'store/cities/cities.usecases';
+import {CitiesRequest} from 'store/cities/cities.types';
 
 interface CityProps {
   description: string;
@@ -14,13 +18,20 @@ interface CityProps {
 
 const NavBar = ({title}: NavBarProps) => {
   const [isOpen, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOnPress = () => {
     setOpen(!isOpen);
   };
 
   const add = (city: CityProps) => {
-    console.tron.log(city.description);
+    const cityArray = city.description.split(',');
+    const values: CitiesRequest = {
+      city: cityArray[0],
+      country: cityArray.length === 3 ? cityArray[2] : cityArray[1],
+    };
+    getCity(values, dispatch);
+    setOpen(false);
   };
 
   const renderSearhcInput = () => {
@@ -29,15 +40,15 @@ const NavBar = ({title}: NavBarProps) => {
         <TouchableOpacity onPress={handleOnPress}>
           <Icon name="close" size={30} color={colors.secondary} />
         </TouchableOpacity>
-        {/* <Input autoFocus={true} /> */}
         <GooglePlacesAutocomplete
           placeholder=""
+          minLength={4}
           onPress={(data: CityProps) => {
             add(data);
           }}
           listViewDisplayed={false}
           query={{
-            key: 'AIzaSyAAIXdgMWTWmPKqPds5FZPMAaFc9C7LJBU',
+            key: Config.GOOGLE_PLACES_API,
             language: 'pt_BR',
           }}
           styles={{
@@ -45,6 +56,9 @@ const NavBar = ({title}: NavBarProps) => {
               zIndex: 9,
               position: 'absolute',
               top: 51,
+            },
+            textInput: {
+              color: colors.textSecondary,
             },
           }}
         />

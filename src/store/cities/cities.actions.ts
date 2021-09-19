@@ -13,3 +13,13 @@ export const errorPullData = (error: any) => ({
   type: CitiesTypes.ERROR_PULL_DATA,
   payload: error,
 });
+
+export const removePullData = (data: any) => ({
+  type: CitiesTypes.REMOVE_PULL_DATA,
+  payload: data,
+});
+
+export const favoriteCity = (data: any) => ({
+  type: CitiesTypes.FAVORITE_CITY,
+  payload: data,
+});
