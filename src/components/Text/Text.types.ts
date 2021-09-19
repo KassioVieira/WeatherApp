@@ -5,6 +5,7 @@ export interface TextProps {
   uppercase?: boolean;
   center?: boolean;
   top?: number;
+  size?: number;
 }
 
 export interface ButtonTextProps {

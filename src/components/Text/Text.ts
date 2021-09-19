@@ -26,7 +26,7 @@ export const Heading = styled(BaseText)`
 `;
 
 export const Title = styled(BaseText)`
-  font-size: 18px;
+  font-size: ${({size}) => size || '18px'};
   font-weight: 500;
 `;
 
