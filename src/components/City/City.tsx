@@ -3,9 +3,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Swipeable} from 'react-native-gesture-handler';
 
 import {CityProps} from './City.types';
-import {Card, Row, Col, Spacer, Favorite, Remove} from './City.styles';
+import {Favorite, Remove} from './City.styles';
 import {Body, Title} from 'components/Text';
+import {Card, Row, Col, Spacer} from 'components/Layout';
 import colors from 'values/colors';
+import {getTemp} from 'utils/temp';
 
 const City = ({
   name,
@@ -17,8 +19,6 @@ const City = ({
   onPress,
   favoritePress,
 }: CityProps) => {
-  const getTemp = (temp: number) => `${temp.toFixed(0)}º`;
-
   const rightAction = () => {
     return (
       <Remove onPress={remove}>

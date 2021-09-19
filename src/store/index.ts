@@ -4,6 +4,7 @@ import {persistStore, persistReducer} from 'redux-persist';
 import reducers from 'store/reducers';
 
 import {CitiesState} from './cities/cities.types';
+import {CityState} from './city/city.types';
 import AsyncStorage from '@react-native-community/async-storage';
 
 let storeEnhancers: Function[] = [];
@@ -16,6 +17,7 @@ if (__DEV__) {
 
 export interface ApplicationState {
   cities: CitiesState;
+  city: CityState;
 }
 
 const persistConfig = {

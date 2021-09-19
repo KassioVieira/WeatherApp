@@ -7,6 +7,13 @@ import {removeCity, favoriteCity} from 'store/cities/cities.usecases';
 import {ApplicationState} from 'store';
 import Empty from 'components/Empty/Empty';
 import City from 'components/City';
+import {useNavigation} from '@react-navigation/core';
+
+interface CitySelected {
+  id: number;
+  name: string;
+  country: string;
+}
 
 const Cities = () => {
   const {data} = useSelector<ApplicationState, CitiesState>(
@@ -14,8 +21,9 @@ const Cities = () => {
   );
 
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
-  const remove = (id: number, name: string) => {
+  const remove = ({id, name}: CitySelected) => {
     Alert.alert('Atenção', `Deseja remover ${name} da lista de cidades?`, [
       {
         text: 'Cancel',
@@ -26,20 +34,20 @@ const Cities = () => {
     ]);
   };
 
-  const open = (name: string) => {
-    Alert.alert('Atenção', `detalhes ${name}`);
+  const open = ({name, country}: CitySelected) => {
+    navigation.navigate('Detail', {title: name, country});
   };
 
   return (
     <View>
       <FlatList
         contentContainerStyle={styles.content}
-        data={data.reverse()}
+        data={data}
         renderItem={({item}) => (
           <City
             {...item}
-            remove={() => remove(item.id, item.name)}
-            onPress={() => open(item.name)}
+            remove={() => remove(item)}
+            onPress={() => open(item)}
             favoritePress={() => favoriteCity(item.id, dispatch)}
           />
         )}
@@ -52,7 +60,7 @@ const Cities = () => {
 
 const styles = StyleSheet.create({
   content: {
-    paddingVertical: 30,
+    paddingBottom: 20,
   },
 });
 

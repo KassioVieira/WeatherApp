@@ -9,6 +9,8 @@ import Cities from 'screens/Cities';
 import Detail from 'screens/Detail';
 import Search from 'screens/Search';
 import NavBar from 'components/NavBar/NavBar';
+import colors from 'values/colors';
+import Header from 'components/Header/Header';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -20,6 +22,7 @@ export const Screens = () => {
           name="Cities"
           component={Cities}
           options={{
+            title: 'Cidades',
             header: () => <NavBar title="Cidades" />,
           }}
         />
@@ -34,7 +37,15 @@ export const Screens = () => {
           name="Detail"
           component={Detail}
           options={{
-            headerShown: false,
+            title: 'Detalhes',
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTitleStyle: {
+              color: colors.secondary,
+            },
+            headerTintColor: colors.secondary,
+            headerLeftLabelVisible: false,
           }}
         />
       </Stack.Navigator>
