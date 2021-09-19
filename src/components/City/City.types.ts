@@ -3,6 +3,7 @@ export interface CityProps {
   id: number;
   main: Main;
   weather: Weather;
+  sys: Sys;
   favorite: boolean;
   remove: Function;
   onPress: Function;
@@ -20,4 +21,7 @@ interface Weather {
   main: string;
   description: string;
   icon: string;
+}
+interface Sys {
+  country: string;
 }
