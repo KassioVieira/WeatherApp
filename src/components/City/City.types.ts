@@ -4,6 +4,8 @@ export interface CityProps {
   main: Main;
   weather: Weather;
   favorite: boolean;
+  remove: Function;
+  onPress: Function;
 }
 
 interface Main {

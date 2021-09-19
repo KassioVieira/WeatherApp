@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList, StyleSheet, Alert} from 'react-native';
 import {useSelector} from 'react-redux';
 
 import {CitiesState} from 'store/cities/cities.types';
@@ -12,12 +12,26 @@ const Cities = () => {
     ({cities}) => cities,
   );
 
+  const remove = (name: string) => {
+    Alert.alert('Atenção', `remover ${name}`);
+  };
+
+  const open = (name: string) => {
+    Alert.alert('Atenção', `detalhes ${name}`);
+  };
+
   return (
     <View>
       <FlatList
         contentContainerStyle={styles.content}
         data={data.cities}
-        renderItem={({item}) => <City {...item} />}
+        renderItem={({item}) => (
+          <City
+            {...item}
+            remove={() => remove(item.name)}
+            onPress={() => open(item.name)}
+          />
+        )}
         keyExtractor={item => `${item.id}`}
         ListEmptyComponent={<Empty />}
       />
