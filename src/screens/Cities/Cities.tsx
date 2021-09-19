@@ -1,10 +1,20 @@
+import Empty from 'components/Empty/Empty';
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 
 const Cities = () => {
   return (
     <View>
-      <Text>Cities Screen</Text>
+      <FlatList
+        data={[]}
+        renderItem={({item}) => (
+          <View>
+            <Text>{item.city}</Text>
+          </View>
+        )}
+        keyExtractor={item => item.city}
+        ListEmptyComponent={<Empty />}
+      />
     </View>
   );
 };

@@ -13,6 +13,8 @@
     "@react-native-masked-view/masked-view": "^0.2.6",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/stack": "^6.0.7",
+    "lottie-ios": "3.2.3",
+    "lottie-react-native": "^4.0.3",
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-native-gesture-handler": "^1.10.3",
@@ -22,7 +24,6 @@
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
     "redux-persist": "^6.0.0",
-    "redux-persist-filesystem-storage": "^4.0.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
