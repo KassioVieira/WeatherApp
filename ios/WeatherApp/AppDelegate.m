@@ -26,7 +26,7 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  self.window.tintColor = [UIColor whiteColor];
+  self.window.tintColor = [UIColor blueColor];
   return YES;
 }
 
