@@ -5,6 +5,7 @@ import LottieView from 'lottie-react-native';
 
 import {Container, Content} from './Loading.styles';
 import {LoadingProps} from './Loading.types';
+import {translate} from 'locales';
 
 const Loading = ({show}: LoadingProps) => {
   return (
@@ -22,7 +23,7 @@ const Loading = ({show}: LoadingProps) => {
             autoPlay
             style={styles.lottie}
           />
-          <Title>Carregando...</Title>
+          <Title>{translate('loading')}</Title>
         </Content>
       </Container>
     </Modal>

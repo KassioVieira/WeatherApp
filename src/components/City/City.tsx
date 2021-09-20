@@ -8,6 +8,7 @@ import {Body, Title} from 'components/Text';
 import {Card, Row, Col, Spacer} from 'components/Layout';
 import colors from 'values/colors';
 import {getTemp} from 'utils/temp';
+import {translate} from 'locales';
 
 const City = ({
   name,
@@ -23,7 +24,7 @@ const City = ({
     return (
       <Remove onPress={remove}>
         <Icon color={colors.secondary} size={30} name="trash-can-outline" />
-        <Body color={colors.secondary}>Excluir</Body>
+        <Body color={colors.secondary}>{translate('delete')}</Body>
       </Remove>
     );
   };
@@ -32,7 +33,7 @@ const City = ({
     <Swipeable
       containerStyle={{marginTop: 16}}
       renderRightActions={rightAction}
-      onSwipeableRightOpen={() => console.tron.log('Opening')}>
+      onSwipeableRightOpen={() => console.log('Opening')}>
       <Card onPress={onPress}>
         <Row>
           <Col>

@@ -6,6 +6,7 @@ import {CitiesRequest} from './cities.types';
 
 import api from 'services/api';
 import {store} from 'store';
+import {getLanguage, getUnits} from 'utils/language';
 
 export const getCity = async (
   {city, country}: CitiesRequest,
@@ -14,7 +15,9 @@ export const getCity = async (
   try {
     dispatch(actions.loadPullData());
     const {data} = await api.get(
-      `weather?q=${city},${country}&appid=${Config.OPEN_WEATHER_API}&units=metric&lang=pt_BR`,
+      `weather?q=${city},${country}&appid=${
+        Config.OPEN_WEATHER_API
+      }&units=${getUnits()}&lang=${getLanguage()}`,
     );
     dispatch(actions.succesPullData({...data, country}));
   } catch (error) {

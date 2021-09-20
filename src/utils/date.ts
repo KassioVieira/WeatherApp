@@ -1,3 +1,4 @@
+import {getLanguageByDevice} from 'locales';
 import moment from 'moment';
 
 const weekdays = {
@@ -29,13 +30,17 @@ export const getTemp = (temp: number) => `${parseInt(temp)}º`;
 
 export const formatWeekDay = (date: string) => {
   const day = moment(date).format('dddd');
-  return weekdays[day];
+  const language = getLanguageByDevice();
+  return language === 'en' ? day : weekdays[day];
 };
 
 export const formatDateWithMonth = (date: string) => {
   const month = moment(date).format('MMMM');
   const day = moment(date).format('DD');
-  return `${day} de ${months[month]}`;
+
+  const language = getLanguageByDevice();
+
+  return language === 'en' ? `${month} ${day}` : `${day} de ${months[month]}`;
 };
 
 export const formatDate = (date: string) => {

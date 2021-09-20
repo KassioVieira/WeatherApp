@@ -4,6 +4,7 @@ import LottieView from 'lottie-react-native';
 
 import {Wrapper} from './Empty.styles';
 import {Title, Body} from 'components/Text';
+import {translate} from 'locales';
 
 const Empty = () => {
   return (
@@ -13,9 +14,9 @@ const Empty = () => {
         autoPlay
         style={styles.lottie}
       />
-      <Title>Nenhuma cidade foi adicionada.</Title>
+      <Title>{translate('empty')}</Title>
       <Body center top={20}>
-        Tente Adicionar ima cidade usando o botão de busca.
+        {translate('help')}
       </Body>
     </Wrapper>
   );
