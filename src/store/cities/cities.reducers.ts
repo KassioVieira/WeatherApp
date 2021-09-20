@@ -15,11 +15,11 @@ const reducer: Reducer<CitiesState> = (state = defaultState, action) => {
     case CitiesTypes.SUCCESS_PULL_DATA:
       return {...state, data: [...state.data, action.payload], loading: false};
     case CitiesTypes.REMOVE_PULL_DATA:
-      return {...state, data: action.payload};
+      return {...state, data: action.payload, loading: false};
     case CitiesTypes.ERROR_PULL_DATA:
       return {...state, error: action.payload, loading: false};
     case CitiesTypes.FAVORITE_CITY:
-      return {...state, data: action.payload};
+      return {...state, data: action.payload, loading: false};
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import {ApplicationState} from 'store';
 import Empty from 'components/Empty/Empty';
 import City from 'components/City';
 import {useNavigation} from '@react-navigation/core';
+import Loading from 'components/Loading';
 
 interface CitySelected {
   id: number;
@@ -16,7 +17,7 @@ interface CitySelected {
 }
 
 const Cities = () => {
-  const {data} = useSelector<ApplicationState, CitiesState>(
+  const {data, loading} = useSelector<ApplicationState, CitiesState>(
     ({cities}) => cities,
   );
 
@@ -38,6 +39,7 @@ const Cities = () => {
     navigation.navigate('Detail', {title: name, country});
   };
 
+  console.tron.log('Loading ', loading);
   return (
     <View>
       <FlatList
@@ -54,6 +56,7 @@ const Cities = () => {
         keyExtractor={item => `${item.id}`}
         ListEmptyComponent={<Empty />}
       />
+      <Loading show={loading} />
     </View>
   );
 };

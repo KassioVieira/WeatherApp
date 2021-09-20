@@ -5,6 +5,7 @@ const colors = {
   textPrimary: '#f28200',
   textSecondary: '#000000',
   favorite: '#DC143C',
+  transparentBlack: 'rgba(0, 0, 0, 0.5)',
 };
 
 export default colors;
