@@ -1,7 +1,7 @@
 import {getLanguageByDevice} from 'locales';
 
 export const getLanguage = () => {
-  return getLanguageByDevice() === 'en' ? 'us' : 'pt_BR';
+  return getLanguageByDevice() === 'en' ? 'en' : 'pt_BR';
 };
 
 export const getUnits = () => {
