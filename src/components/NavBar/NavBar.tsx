@@ -11,6 +11,7 @@ import {NavBarProps} from './NavBar.types';
 import {Header, Title} from './NavBar.styles';
 import {getCity} from 'store/cities/cities.usecases';
 import {CitiesRequest} from 'store/cities/cities.types';
+import {getLanguageByDevice} from 'locales';
 
 interface CityProps {
   description: string;
@@ -49,7 +50,7 @@ const NavBar = ({title}: NavBarProps) => {
           listViewDisplayed={false}
           query={{
             key: Config.GOOGLE_PLACES_API,
-            language: 'pt_BR',
+            language: getLanguageByDevice() === 'en' ? 'us' : 'pt_BR',
           }}
           styles={{
             listView: {

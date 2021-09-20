@@ -9,6 +9,7 @@ import Empty from 'components/Empty/Empty';
 import City from 'components/City';
 import {useNavigation} from '@react-navigation/core';
 import Loading from 'components/Loading';
+import {translate} from 'locales';
 
 interface CitySelected {
   id: number;
@@ -24,8 +25,8 @@ const Cities = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const remove = ({id, name}: CitySelected) => {
-    Alert.alert('Atenção', `Deseja remover ${name} da lista de cidades?`, [
+  const remove = ({id}: CitySelected) => {
+    Alert.alert(translate('title'), translate('message'), [
       {
         text: 'Cancel',
         onPress: () => {},
@@ -39,7 +40,6 @@ const Cities = () => {
     navigation.navigate('Detail', {title: name, country});
   };
 
-  console.tron.log('Loading ', loading);
   return (
     <View>
       <FlatList

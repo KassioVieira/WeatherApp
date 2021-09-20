@@ -10,6 +10,7 @@ import {getFiveDays} from 'store/city/city.usecases';
 import Day from 'components/Day';
 import Loading from 'components/Loading';
 import {Body} from 'components/Text';
+import {translate} from 'locales';
 
 const Detail = ({route}) => {
   const {title, country} = route.params;
@@ -36,7 +37,7 @@ const Detail = ({route}) => {
         ListEmptyComponent={<View />}
         ListHeaderComponent={
           <Body center top={20}>
-            Previsão para os próximos 5 dias
+            {translate('forecast')}
           </Body>
         }
       />

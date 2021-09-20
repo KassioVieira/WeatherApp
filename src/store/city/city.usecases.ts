@@ -6,6 +6,7 @@ import * as actions from 'store/city/city.actions';
 import api from 'services/api';
 import {CitiesRequest} from 'store/cities/cities.types';
 import {formatDate, formatDateWithMonth, formatWeekDay} from 'utils/date';
+import {getLanguage, getUnits} from 'utils/language';
 
 export const getFiveDays = async (
   {city, country}: CitiesRequest,
@@ -14,7 +15,9 @@ export const getFiveDays = async (
   try {
     dispatch(actions.loadCityData());
     const {data} = await api.get(
-      `forecast?q=${city},${country}&appid=${Config.OPEN_WEATHER_API}&units=metric&lang=pt_BR`,
+      `forecast?q=${city},${country}&appid=${
+        Config.OPEN_WEATHER_API
+      }&units=${getUnits()}&lang=${getLanguage()}`,
     );
 
     const fiveDays = createArrayOfDates(data.list);
