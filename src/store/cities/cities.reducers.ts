@@ -14,6 +14,8 @@ const reducer: Reducer<CitiesState> = (state = defaultState, action) => {
       return {...state, loading: true};
     case CitiesTypes.SUCCESS_PULL_DATA:
       return {...state, data: [...state.data, action.payload], loading: false};
+    case CitiesTypes.UPDATE_DATA:
+      return {...state, data: action.payload, loading: false};
     case CitiesTypes.REMOVE_PULL_DATA:
       return {...state, data: action.payload, loading: false};
     case CitiesTypes.ERROR_PULL_DATA:

@@ -4,6 +4,11 @@ export const loadPullData = () => ({
   type: CitiesTypes.LOAD_PULL_DATA,
 });
 
+export const updateData = (data: any) => ({
+  type: CitiesTypes.UPDATE_DATA,
+  payload: data,
+});
+
 export const succesPullData = (data: any) => ({
   type: CitiesTypes.SUCCESS_PULL_DATA,
   payload: data,

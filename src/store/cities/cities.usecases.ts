@@ -51,3 +51,49 @@ export const favoriteCity = (id: number, dispatch: Dispatch) => {
     dispatch(actions.errorPullData(error));
   }
 };
+
+export const updateTemp = async (dispatch: Dispatch) => {
+  try {
+    const {cities} = store.getState();
+    if (cities.data.length > 0) {
+      const result = await Promise.all(getAllCalls(cities.data));
+      const data = result.map(res => res.data);
+      const updateArray = createArrayUpdate(data.flat(), cities.data);
+      dispatch(actions.updateData(updateArray));
+    }
+  } catch (error) {
+    dispatch(actions.errorPullData(error));
+  }
+};
+
+const createArrayUpdate = (result: [], old: []) => {
+  let aux = [];
+
+  old.map((item: Object, index: number) => {
+    aux.push({
+      name: item.name,
+      country: item.country,
+      main: {
+        temp: result[index].main.temp,
+        temp_min: result[index].main.temp_min,
+        temp_max: result[index].main.temp_max,
+      },
+      weather: [
+        {
+          description: item.weather[0].description,
+        },
+      ],
+    });
+  });
+  return aux;
+};
+
+const getAllCalls = (cities: []) => {
+  return cities.map(item => {
+    return api.get(
+      `weather?q=${item.name},${item.country}&appid=${
+        Config.OPEN_WEATHER_API
+      }&units=${getUnits()}&lang=${getLanguage()}`,
+    );
+  });
+};

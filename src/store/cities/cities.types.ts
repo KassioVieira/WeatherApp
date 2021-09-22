@@ -4,6 +4,7 @@ export enum CitiesTypes {
   SUCCESS_PULL_DATA = 'SUCCESS_PULL_DATA',
   REMOVE_PULL_DATA = 'REMOVE_PULL_DATA',
   FAVORITE_CITY = 'FAVORITE_CITY',
+  UPDATE_DATA = 'UPDATE_DATA',
 }
 
 type CitiesType = Object;

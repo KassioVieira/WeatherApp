@@ -8,4 +8,6 @@ export default {
   title: 'Atenção',
   empty: 'Nenhuma cidade foi adicionada.',
   help: 'Tente Adicionar uma cidade usando o botão de busca.',
+  add: 'ADICIONAR',
+  search: 'Nenhuma cidade foi encontrada',
 };

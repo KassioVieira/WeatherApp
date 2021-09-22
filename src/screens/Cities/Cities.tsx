@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, FlatList, StyleSheet, Alert} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {CitiesState} from 'store/cities/cities.types';
-import {removeCity, favoriteCity} from 'store/cities/cities.usecases';
+import {
+  removeCity,
+  favoriteCity,
+  updateTemp,
+} from 'store/cities/cities.usecases';
 import {ApplicationState} from 'store';
 import Empty from 'components/Empty/Empty';
 import City from 'components/City';
@@ -39,6 +43,10 @@ const Cities = () => {
   const open = ({name, country}: CitySelected) => {
     navigation.navigate('Detail', {title: name, country});
   };
+
+  useEffect(() => {
+    updateTemp(dispatch);
+  }, []);
 
   return (
     <View>
