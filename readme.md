@@ -7,10 +7,18 @@ This project was created with React-Native in the challenge of company SpartaLab
 <table>
   <tr>
     <td>
-      <img src="one.png" alt="screen" width="200"/>
+      <img src="1.png" alt="screen1" width="200"/>
     </td>
     <td>
-      <img src="two.png" alt="screen" width="200"/>
+      <img src="2.png" alt="screen2" width="200"/>
+    </td>
+  <tr>
+    <tr>
+    <td>
+      <img src="3.png" alt="screen3" width="200"/>
+    </td>
+    <td>
+      <img src="4.png" alt="screen4" width="200"/>
     </td>
   <tr>
 </table>
